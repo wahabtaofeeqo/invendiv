@@ -23,18 +23,21 @@ export function cartReducer(state = initialState, action: any): CartState {
   switch (action.type) {
     case addItemToCart.type:
       let id = action.item.id;
-      let isAdded = state.entities[id];
+      let current = state.entities[id];
 
-      if (isAdded) {
+      if (current) {
         let update = {
           id: action.item.id,
-          changes: { ...action.item, total: action.item.total + 1 },
+          changes: { ...action.item, total: current.total + 1 },
         };
 
         return {
           ...adapter.updateOne(update, state),
         };
-      } else return { ...adapter.addOne(action.item, state) };
+      }
+      else return {
+        ...adapter.addOne(action.item, state)
+      };
 
     case removeItemFromCart.type:
       return {

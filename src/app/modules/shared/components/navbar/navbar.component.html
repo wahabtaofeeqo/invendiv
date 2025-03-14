@@ -1,0 +1,37 @@
+<nav
+class="sticky top-0 z-50 bg-white shadow-md border-b border-purple-500"
+>
+<div
+  class="container mx-auto flex items-center justify-between py-6 px-4 md:px-16"
+>
+  <h1 class="text-2xl text-purple-700 font-bold tracking-wide">
+    Invendiv
+  </h1>
+
+  <button
+    class="relative flex items-center gap-2 text-sm font-semibold text-gray-700 hover:text-purple-600 transition cursor-pointer"
+    (click)="onClick.emit()"
+  >
+    <span class="relative">
+      <svg
+        class="w-6 h-6 text-purple-600"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        viewBox="0 0 24 24"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13l-1.5 6h13a1 1 0 100-2h-12.3M7 13H5.4M16 16a2 2 0 100 4 2 2 0 000-4zm-8 0a2 2 0 100 4 2 2 0 000-4z"
+        />
+      </svg>
+      <span
+        class="absolute -top-2 -right-2 bg-purple-600 text-white text-xs w-5 h-5 flex items-center justify-center rounded-full"
+        >{{ count() }}</span
+      >
+    </span>
+    Cart
+  </button>
+</div>
+</nav>

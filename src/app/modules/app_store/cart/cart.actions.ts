@@ -12,7 +12,7 @@ export const removeItemFromCart = createAction(
 );
 
 export const updateItemInCart = createAction(
-  'Remove Item From Cart [Cart API]',
+  'Update Item Cart [Cart API]',
   props<{ product: Product }>()
 );
 

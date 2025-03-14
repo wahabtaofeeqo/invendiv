@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { CartItem } from '../../shared/models/cart-item.model';
 import { Store } from '@ngrx/store';
 import {
@@ -13,7 +13,8 @@ import {
   templateUrl: './cart-component.component.html',
   styleUrl: './cart-component.component.scss',
 })
-export class CartComponentComponent implements OnInit {
+export class CartComponentComponent implements OnInit, OnChanges {
+
   @Input()
   items: CartItem[] = [];
 
@@ -23,8 +24,11 @@ export class CartComponentComponent implements OnInit {
   constructor(private store: Store) {}
 
   ngOnInit(): void {
-    this.calculateTotal();
-    this.grandTotal = this.amount;
+    this.priceCheck();
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    this.priceCheck()
   }
 
   removeItem(item: CartItem) {
@@ -59,5 +63,10 @@ export class CartComponentComponent implements OnInit {
       let discount = (20 / 100) * this.amount;
       this.grandTotal = this.amount - discount;
     }
+  }
+
+  priceCheck() {
+    this.calculateTotal();
+    this.grandTotal = this.amount;
   }
 }
